@@ -178,6 +178,29 @@ li {
   cursor: default;
 }
 
+/*Projects Image Carousel*/
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  overflow: hidden;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.carousel-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: none;
+}
+
+.carousel-container img.active {
+  display: block;
+}
+
 /* Footer */
 .site-footer {
   width: 100%;
