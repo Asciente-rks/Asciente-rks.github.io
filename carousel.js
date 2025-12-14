@@ -49,7 +49,12 @@ function setupCarousel(carouselId) {
         nextBtn.className = "carousel-arrow next";
         nextBtn.onclick = () => { stopAuto(); nextImage(); startAuto(); };
 
+        const isMobile = window.innerWidth <= 768;
+
+        if (!isMobile) {
         container.append(prevBtn, nextBtn);
+        }
+
     }
 
     function startAuto() { intervalId = setInterval(nextImage, 7000); }
