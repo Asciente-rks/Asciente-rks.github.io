@@ -10,7 +10,8 @@ function setupCarousel(carouselId) {
         img.style.position = "absolute";
         img.style.inset = "0";
         img.style.width = "100%";
-        img.style.height = "100%";
+        img.style.height = "auto";
+        img.style.top = "50";
         img.style.objectFit = "contain";
         img.style.transition = "transform 0.5s ease-in-out";
         img.style.transform = `translateX(${i * 100}%)`;
@@ -236,8 +237,32 @@ function setupCarousel(carouselId) {
     });
 
     showImage(currentIndex);
+    // Mobile swipe support
+let touchStartX = 0;
+let touchEndX = 0;
+
+container.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+container.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, {passive: true});
+
+function handleSwipe() {
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) { // swipe threshold
+        if (diff > 0) nextImage();
+        else prevImage();
+        stopAuto();
+        startAuto();
+    }
+}
+
     startAuto();
 }
 
 setupCarousel("customer-carousel");
 setupCarousel("admin-carousel");
+setupCarousel("gym-carousel");
