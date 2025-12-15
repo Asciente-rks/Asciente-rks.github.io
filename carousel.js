@@ -60,8 +60,6 @@ function setupCarousel(carouselId) {
         })
     );
 
-    /* ================= LIGHTBOX ================= */
-
     function createLightbox() {
         const lightbox = document.createElement("div");
         const imgEl = document.createElement("img");
@@ -79,7 +77,7 @@ function setupCarousel(carouselId) {
         let startDistance = 0;
         let startScale = 1;
 
-        imgEl.draggable = false; // 🔥 IMPORTANT
+        imgEl.draggable = false;
 
         function clamp() {
             const rect = imgEl.getBoundingClientRect();
@@ -136,7 +134,6 @@ function setupCarousel(carouselId) {
             lightbox.style.display = "none";
         };
 
-        /* ===== DESKTOP ZOOM ===== */
         imgEl.addEventListener("wheel", e => {
             e.preventDefault();
 
@@ -151,10 +148,9 @@ function setupCarousel(carouselId) {
             apply();
         }, { passive: false });
 
-        /* ===== DESKTOP DRAG (SAME AS MOBILE) ===== */
         imgEl.addEventListener("mousedown", e => {
             if (scale === 1 || e.button !== 0) return;
-            e.preventDefault(); // 🔥 STOPS BROWSER IMAGE DRAG
+            e.preventDefault();
 
             dragging = true;
             lastX = e.clientX;
@@ -179,7 +175,6 @@ function setupCarousel(carouselId) {
             imgEl.style.cursor = "grab";
         });
 
-        /* ===== MOBILE PINCH + DRAG ===== */
         imgEl.addEventListener("touchstart", e => {
             if (e.touches.length === 2) {
                 startDistance = Math.hypot(
