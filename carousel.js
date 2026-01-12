@@ -266,3 +266,5 @@ setupCarousel("customer-carousel");
 setupCarousel("admin-carousel");
 setupCarousel("gym-carousel");
 setupCarousel("lastlight-carousel");
+setupCarousel("aws-carousel");
+setupCarousel("huawei-carousel");
