@@ -354,13 +354,12 @@ li {
 }
 
 /*Cloud Exposure*/
-/* Cloud Exposure Carousels (AWS & Huawei) */
 #aws-carousel,
 #huawei-carousel {
   position: relative;
   width: 100%;
-  max-width: 600px;       /* Same width as other projects */
-  height: 300px;           /* Match 'The Last Light' carousel height */
+  max-width: 600px;
+  height: 300px;
   margin: 20px auto 0 auto;
   overflow: hidden;
   border-radius: 8px;
@@ -371,7 +370,7 @@ li {
 #huawei-carousel img {
   width: 100%;
   height: 100%;
-  object-fit: contain;      /* Keeps aspect ratio, no stretching */
+  object-fit: contain;
   position: absolute;
   top: 0;
   left: 0;
@@ -379,7 +378,6 @@ li {
   cursor: pointer;
 }
 
-/* Description under carousel */
 #aws-carousel + .carousel-desc,
 #huawei-carousel + .carousel-desc {
   margin-top: 10px;
@@ -611,47 +609,46 @@ li {
 
   /*Cloud Exposure*/
   #aws-carousel,
-#huawei-carousel {
-  max-width: 600px;       /* Desktop max width */
-  width: 100%;
-  height: auto !important;
-  aspect-ratio: 16 / 9;
-  max-height: none;
-  margin: 20px auto 0 auto;
-  position: relative;     /* Keep arrows functioning */
-  overflow: hidden;       /* Hide overflowing parts */
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: block;         /* Remove flex to avoid extra spacing */
-}
+  #huawei-carousel {
+    max-width: 600px;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    max-height: none;
+    margin: 20px auto 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: block;
+  }
 
-#aws-carousel img,
-#huawei-carousel img {
-  width: 100%;            /* Full width */
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block;         /* Remove inline spacing below images */
-  margin: 0;              /* Remove default image margin */
-  padding: 0;             /* Remove default padding */
-}
+  #aws-carousel img,
+  #huawei-carousel img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
 
-/* Description below carousel */
-#aws-carousel + .carousel-desc,
-#huawei-carousel + .carousel-desc {
-  margin-top: 10px;       /* Space for text only */
-  text-align: center;
-  font-size: 16px;
-  color: #333;
-  max-width: 100%;
-  word-wrap: break-word;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
+  #aws-carousel + .carousel-desc,
+  #huawei-carousel + .carousel-desc {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    max-width: 100%;
+    word-wrap: break-word;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
 
-#aws-carousel + .carousel-desc.active,
-#huawei-carousel + .carousel-desc.active {
-  opacity: 1;
-}
+  #aws-carousel + .carousel-desc.active,
+  #huawei-carousel + .carousel-desc.active {
+    opacity: 1;
+  }
 
   /* Footer */
   .site-footer {

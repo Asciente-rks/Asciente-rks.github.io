@@ -10,34 +10,51 @@ function setupCarousel(carouselId) {
         img.style.position = "absolute";
         img.style.inset = "0";
         img.style.width = "100%";
-        img.style.height = "auto";
-        img.style.top = "50";
-        img.style.objectFit = "contain";
+        img.style.height = "100%";
+        img.style.objectFit = "cover";
         img.style.transition = "transform 0.5s ease-in-out";
-        img.style.transform = `translateX(${i * 100}%)`;
         img.style.cursor = "pointer";
     });
 
-    function showImage(index) {
+    function showImage(nextIndex) {
+        const length = images.length;
+
         images.forEach((img, i) => {
-            img.style.transform = `translateX(${(i - index) * 100}%)`;
+            let currentOffset = i - currentIndex;
+            let nextOffset = i - nextIndex;
+
+            if (currentOffset < -length / 2) currentOffset += length;
+            if (currentOffset > length / 2) currentOffset -= length;
+
+            if (nextOffset < -length / 2) nextOffset += length;
+            if (nextOffset > length / 2) nextOffset -= length;
+
+            if (Math.abs(currentOffset - nextOffset) > 1) {
+                img.style.transition = "none";
+            } else {
+                img.style.transition = "transform 0.5s ease-in-out";
+            }
+
+            img.style.transform = `translateX(${nextOffset * 100}%)`;
         });
 
         desc.classList.remove("active");
         setTimeout(() => {
-            desc.textContent = images[index].dataset.desc;
+            desc.textContent = images[nextIndex].dataset.desc;
             desc.classList.add("active");
         }, 200);
+        
+        currentIndex = nextIndex;
     }
 
     function nextImage() {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
+        let newIndex = (currentIndex + 1) % images.length;
+        showImage(newIndex);
     }
 
     function prevImage() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showImage(currentIndex);
+        let newIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(newIndex);
     }
 
     function startAuto() {
